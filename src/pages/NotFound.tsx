@@ -3,6 +3,7 @@ export const NotFound = () => {
         <div>
             <h1>404 Page Not Found</h1>
             <p> Check your URL, or contact the admin to fix this. </p>
+            <a href="/"> back to home page </a>
         </div>
     )
 }
