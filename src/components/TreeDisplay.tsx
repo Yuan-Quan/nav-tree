@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { ITreeDataItem, treeDataRoot } from '../assets/TreeData';
 import { AppContext } from '../App';
+import { getAllNodeKeys, getNodeSearchTerm, getSearchResultKeys, getSearchResultTree } from './searchTree';
 
 export default function TreeDisplay() {
   const [expanded, setExpanded] = React.useState<string[]>([]);
@@ -25,17 +26,6 @@ export default function TreeDisplay() {
   const handleFocus = (event: React.SyntheticEvent, nodeId: string) => {
     console.log(nodeId);
   };
-
-  // return a array of all the keys of the children of the given node
-  // mainly for expand all function
-  const getAllNodeKeys = (node: ITreeDataItem): string[] => {
-    const result: string[] = [];
-    result.push(node.key);
-    if (node.nodes) {
-        result.push(...node.nodes.flatMap(getAllNodeKeys));
-    }
-    return result;
-  }
 
   const handleExpandAllClick = () => { setExpanded((oldExpanded) =>
       oldExpanded.length === 0 ? getAllNodeKeys(displayTree) : [],
@@ -62,10 +52,16 @@ export default function TreeDisplay() {
   const renderTree = (node: ITreeDataItem) => (
     <TreeItem key={node.key} nodeId={node.key} label={<a onClick={() => {redirectTopLevel(node.url)}} target="_parent" href="node.url">{node.label}</a>}>
       {Array.isArray(node.nodes)
+        // it's a recursive call, this is bad, some day I'll fix it
         ? node.nodes.map((child) => renderTree(child))
         : null}
     </TreeItem>
   )
+
+  React.useEffect(()=>{
+    console.log("update tree");
+    setDisplayTree(getSearchResultTree(treeDataRoot, searchTerm));
+  },[searchTerm])
 
   return (
     <Box sx={{ height: 270, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}>
