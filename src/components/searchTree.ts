@@ -1,4 +1,4 @@
-import { ITreeDataItem } from "../assets/TreeData";
+import { ITreeDataItem, treeDataRoot } from "../assets/TreeData";
 
 // return a array of all the keys of the children of the given node
 // mainly for expand all function
@@ -12,40 +12,88 @@ export const getAllNodeKeys = (node: ITreeDataItem): string[] => {
     return result;
 }
 
-// return a searchterm string for the node of given key
-// it contains all the parent nodes' labels, and the node's label
-// it's a recursive call, this is bad, some day I'll fix it
-// and this should be cached, now it's recalculated for all nodes when search term changes.
-// some day I'll fix it
-export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
+const findNode = (root: ITreeDataItem, key: string): ITreeDataItem | undefined => {
     if (root.key === key) {
-        return root.label;
+        return root;
     }
     if (root.nodes) {
-        for (const node of root.nodes) {
-            const result = getNodeSearchTerm(node, key); 
+        for (const child of root.nodes) {
+            const result = findNode(child, key);
             if (result) {
-                return root.label + ' ' + result;
+                return result;
             }
         }
     }
-    return '';
+    return undefined;
 }
 
-// return a array of all the keys of the nodes that match the search term
-export const getSearchResultKeys = (root: ITreeDataItem, searchTerm: string): string[] => {
-    const result: string[] = [];
-    if (root.label.toLowerCase().includes(searchTerm.toLowerCase())) {
-        result.push(root.key);
-    }
+// return node's parent node
+const findParent = (root: ITreeDataItem, key: string): ITreeDataItem | undefined => {
     if (root.nodes) {
-        // it's a recursive call, this is bad, some day I'll fix it
-        result.push(...root.nodes.flatMap(node => getSearchResultKeys(node, searchTerm)));
+        for (const child of root.nodes) {
+            if (child.key === key) {
+                return root;
+            }
+            const result = findParent(child, key);
+            if (result) {
+                return result;
+            }
+        }
+    }
+    return undefined;
+}
+
+// return a searchterm string array for the node of given key
+// it contains all the parent nodes' labels, and the node's label
+export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] => {
+    const result: string[] = [];
+    const node = findNode(root, key);
+    if (node) {
+        result.push(node.label);
+        let parent = findParent(root, node.key);
+        while (parent) {
+            result.push(parent.label);
+            parent = findParent(root, parent.key);
+        }
     }
     return result;
 }
-// Github Copilot wrote this, I can't understand why it works
-// PLESE DON'T TOUCH IT
+// it's a recursive call, this is bad, some day I'll fix it
+// and this should be cached, now it's recalculated for all nodes when search term changes.
+// some day I'll fix it
+
+export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
+    const result = getNodeSearchTerms(root, key);
+    return result.join('_');
+}
+
+export const testNodeSearchTerm = (root: ITreeDataItem, key: string, querys: string[]): boolean => {
+    console.log('testNodeSearchTerm', key, querys);
+    const term = getNodeSearchTerm(root, key).toLowerCase(); 
+    console.log('testNodeSearchTerm', term);
+    for (const query of querys) {
+        console.log("check ", query)
+        if (term.indexOf(query.toLowerCase()) === -1) {
+            console.log("nope")
+            return false;
+        }
+    }
+    console.log("yep")
+    return true;
+}
+
+// return a array of all the keys of the nodes that match the search query
+export const getSearchResultKeys = (root: ITreeDataItem, querys: string[]): string[] => {
+    const result: string[] = [];
+    const allKeys = getAllNodeKeys(root);
+    for (const key of allKeys) {
+        if (testNodeSearchTerm(root, key, querys)) {
+            console.log("match", key)
+            result.push(key);
+        }
+    }
+    return result;
+}
 
 // return a new tree contains only have the nodes that match the given keys
 export const getFilteredTree = (root: ITreeDataItem, keys: string[]): ITreeDataItem => {
@@ -73,14 +121,15 @@ export const getNodeParentKeys = (root: ITreeDataItem, key: string): string[] =>
 }
 
 // return a new tree contains only have the nodes that match search term
-export const getSearchResultTree = (root: ITreeDataItem, searchTerm: string): ITreeDataItem => {
+export const getSearchResultTree = (root: ITreeDataItem, querys: string[]): ITreeDataItem => {
     // if search term is empty, return the original tree
-    if (searchTerm === '') {
+    if (querys[0] === '') {
         return root;
     }
-        
-    const keys = getSearchResultKeys(root, searchTerm);
-    console.log("search result keys: ", keys);
+
+    const keys = getSearchResultKeys(root, querys);
+
+    console.log('getSearchResultTree', keys);
 
     // in order to render the search result tree, we need to keep the parent nodes of the search result nodes
     // add the parent nodes' keys to the keys array

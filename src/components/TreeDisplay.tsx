@@ -24,12 +24,15 @@ export default function TreeDisplay() {
   };
 
   const handleFocus = (event: React.SyntheticEvent, nodeId: string) => {
-    console.log(nodeId);
+    // update the breadcrumb 
   };
 
   const handleExpandAllClick = () => { setExpanded((oldExpanded) =>
       oldExpanded.length === 0 ? getAllNodeKeys(displayTree) : [],
     );
+
+    const searchT = getNodeSearchTerm(treeDataRoot, '1.1.1');
+    console.log(searchT);
   };
 
   // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page
@@ -59,8 +62,12 @@ export default function TreeDisplay() {
   )
 
   React.useEffect(()=>{
-    console.log("update tree");
-    setDisplayTree(getSearchResultTree(treeDataRoot, searchTerm));
+    // when search term changes, update the display tree
+    setDisplayTree(getSearchResultTree(treeDataRoot, searchTerm.split(" ")));
+    // auto expand all nodes, when search term is not ''
+    if (searchTerm !== '') {
+      setExpanded(getAllNodeKeys(displayTree));
+    }
   },[searchTerm])
 
   return (
