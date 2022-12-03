@@ -57,10 +57,37 @@ export const getFilteredTree = (root: ITreeDataItem, keys: string[]): ITreeDataI
     return result;
 }
 
+// return a array of keys of the nodes that are ancestors of the given node
+export const getNodeParentKeys = (root: ITreeDataItem, key: string): string[] => {
+    const result: string[] = [];
+    if (root.nodes) {
+        for (const node of root.nodes) {
+            if (node.key === key) {
+                result.push(root.key);
+            } else {
+                result.push(...getNodeParentKeys(node, key));
+            }
+        }
+    }
+    return result;    
+}
+
 // return a new tree contains only have the nodes that match search term
 export const getSearchResultTree = (root: ITreeDataItem, searchTerm: string): ITreeDataItem => {
+    // if search term is empty, return the original tree
+    if (searchTerm === '') {
+        return root;
+    }
+        
     const keys = getSearchResultKeys(root, searchTerm);
     console.log("search result keys: ", keys);
+
+    // in order to render the search result tree, we need to keep the parent nodes of the search result nodes
+    // add the parent nodes' keys to the keys array
+    for (const key of keys) {
+        keys.push(...getNodeParentKeys(root, key));
+    }
+
     return getFilteredTree(root, keys);
 }
 
