@@ -30,9 +30,6 @@ export default function TreeDisplay() {
   const handleExpandAllClick = () => { setExpanded((oldExpanded) =>
       oldExpanded.length === 0 ? getAllNodeKeys(displayTree) : [],
     );
-
-    const searchT = getNodeSearchTerm(treeDataRoot, '1.1.1');
-    console.log(searchT);
   };
 
   // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page

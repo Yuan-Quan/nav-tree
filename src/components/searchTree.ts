@@ -76,17 +76,12 @@ export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
 }
 
 export const testNodeSearchTerm = (root: ITreeDataItem, key: string, querys: string[]): boolean => {
-    console.log('testNodeSearchTerm', key, querys);
     const term = getNodeSearchTerm(root, key).toLowerCase(); 
-    console.log('testNodeSearchTerm', term);
     for (const query of querys) {
-        console.log("check ", query)
         if (term.indexOf(query.toLowerCase()) === -1) {
-            console.log("nope")
             return false;
         }
     }
-    console.log("yep")
     return true;
 }
 
@@ -96,7 +91,6 @@ export const getSearchResultKeys = (root: ITreeDataItem, querys: string[]): stri
     const allKeys = getAllNodeKeys(root);
     for (const key of allKeys) {
         if (testNodeSearchTerm(root, key, querys)) {
-            console.log("match", key)
             result.push(key);
         }
     }
@@ -136,8 +130,6 @@ export const getSearchResultTree = (root: ITreeDataItem, querys: string[]): ITre
     }
 
     const keys = getSearchResultKeys(root, querys);
-
-    console.log('getSearchResultTree', keys);
 
     // in order to render the search result tree, we need to keep the parent nodes of the search result nodes
     // add the parent nodes' keys to the keys array
