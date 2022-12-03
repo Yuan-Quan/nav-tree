@@ -1,4 +1,5 @@
 import { ITreeDataItem, treeDataRoot } from "../assets/TreeData";
+import pinyin from "pinyin";
 
 // return a array of all the keys of the children of the given node
 // mainly for expand all function
@@ -63,8 +64,15 @@ export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] =
 // some day I'll fix it
 
 export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
-    const result = getNodeSearchTerms(root, key);
-    return result.join('_');
+    const terms = getNodeSearchTerms(root, key);
+    const checkChCharReg = new RegExp("[\\u4E00-\\u9FFF]+","g");
+    let result = terms.join("_");
+    for (const term of terms) {
+        if (checkChCharReg.test(term)) {
+            result = result + "_" + pinyin(term, { style: pinyin.STYLE_NORMAL }).join("");        
+        }
+    }
+    return result;
 }
 
 export const testNodeSearchTerm = (root: ITreeDataItem, key: string, querys: string[]): boolean => {
