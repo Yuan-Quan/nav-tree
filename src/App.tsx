@@ -5,7 +5,10 @@ import './App.css';
 import { Main } from './pages/Main';
 import { NotFound } from './pages/NotFound';
 
+export const appContext = React.createContext({});
+
 function App() {
+  const [tree, setTree] = React.useState([]);
   return (
     <div className="App">
       <CssBaseline/>
