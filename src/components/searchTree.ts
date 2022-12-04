@@ -44,6 +44,20 @@ const findParent = (root: ITreeDataItem, key: string): ITreeDataItem | undefined
     return undefined;
 }
 
+export const getNodeBreadcrumb = (root: ITreeDataItem, key: string): string[] => {
+    const result: string[] = [];
+    const node = findNode(root, key);
+    if (node) {
+        result.push(node.label);
+        let parent = findParent(root, key);
+        while (parent) {
+            result.push(parent.label);
+            parent = findParent(root, parent.key);
+        }
+    }
+    return result.reverse();
+}
+
 // return a searchterm string array for the node of given key
 // it contains all the parent nodes' labels, and the node's label
 export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] => {

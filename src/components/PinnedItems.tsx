@@ -9,7 +9,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
 import { AppContext } from '../App';
-import { findNode } from './searchTree';
+import { findNode, getNodeBreadcrumb } from './searchTree';
 import { treeDataRoot } from '../assets/TreeData';
 
 interface ILItemProps {
@@ -24,7 +24,6 @@ export const PinnedItems = () => {
     }
 
     const LItem = (props: ILItemProps) => {
-        console.log(props.node)
         const node = findNode(treeDataRoot, props.node)
         return (
             <ListItem
@@ -39,7 +38,7 @@ export const PinnedItems = () => {
               </ListItemAvatar>
               <ListItemText
                 primary={node?.label}
-                secondary="test"
+                secondary={getNodeBreadcrumb(treeDataRoot, props.node).join(" > ")}
               />
             </ListItem>
         )
