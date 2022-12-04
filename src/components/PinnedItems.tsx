@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { AppContext } from '../App';
 import { findNode, getNodeBreadcrumb } from './searchTree';
 import { treeDataRoot } from '../assets/TreeData';
+import { redirectTopLevel } from './TreeDisplay';
 
 interface ILItemProps {
     node: string
@@ -39,6 +40,7 @@ export const PinnedItems = () => {
               <ListItemText
                 primary={node?.label}
                 secondary={getNodeBreadcrumb(treeDataRoot, props.node).join(" > ")}
+                onClick={() => {redirectTopLevel(node?.url)}}
               />
             </ListItem>
         )

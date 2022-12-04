@@ -10,6 +10,23 @@ import { AppContext } from '../App';
 import { getAllNodeKeys, getNodeSearchTerm, getSearchResultKeys, getSearchResultTree } from './searchTree';
 import { TreeItemDisplay } from './TreeItemDisplay';
 
+// if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page
+// if specify target="_parent", browser won't allow it because of the same origin policy
+// witch should be fine when this app is deployed on the same server as magicflu
+// 
+// this is a hacky way to redirect to the magicflu page
+// however, it will cause the hole page to reload
+//
+/// SHOULD NEVER USE THIS IN PRODUCTION
+//
+export const redirectTopLevel = (url: string | undefined) => {
+
+  if (window.top && url) 
+  {
+      window.top.location.href = url;
+  }
+}
+
 export default function TreeDisplay() {
   const [expanded, setExpanded] = React.useState<string[]>([]);
   const [selected, setSelected] = React.useState<string[]>([]);
@@ -36,22 +53,7 @@ export default function TreeDisplay() {
     setPinnedItems([...pinnedItems, key]);
   }
 
-  // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page
-  // if specify target="_parent", browser won't allow it because of the same origin policy
-  // witch should be fine when this app is deployed on the same server as magicflu
-  // 
-  // this is a hacky way to redirect to the magicflu page
-  // however, it will cause the hole page to reload
-  //
-  /// SHOULD NEVER USE THIS IN PRODUCTION
-  //
-  const redirectTopLevel = (url: string | undefined) => {
-
-    if (window.top && url) 
-    {
-        window.top.location.href = url;
-    }
-  }
+  
 
   const renderTree = (node: ITreeDataItem) => (
     <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} type={node.nodetype} onPinClick={() => handelPinClick(node.key)} />}>
