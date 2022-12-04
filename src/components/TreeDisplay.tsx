@@ -28,7 +28,11 @@ export const redirectTopLevel = (url: string | undefined) => {
 }
 
 export default function TreeDisplay() {
-  const [expanded, setExpanded] = React.useState<string[]>([]);
+  const [expanded, setExpanded] = React.useState<string[]>(()=>{
+    // recall the expanded nodes from local storage (if available)
+    const expandedNodes = window.localStorage.getItem("expandedNodes");
+    return expandedNodes ? JSON.parse(expandedNodes) : [];
+  });
   const [selected, setSelected] = React.useState<string[]>([]);
   const [displayTree, setDisplayTree] = React.useState<ITreeDataItem>(treeDataRoot)
   const {searchTerm, pinnedItems, setPinnedItems} = React.useContext(AppContext);
@@ -81,6 +85,11 @@ export default function TreeDisplay() {
       setExpanded(getAllNodeKeys(displayTree));
     }
   },[searchTerm])
+
+  React.useEffect(()=>{
+    // presist the expanded state of the tree
+    window.localStorage.setItem('expandedNodes', JSON.stringify(expanded));
+  },[expanded])
 
   return (
     <Box>
