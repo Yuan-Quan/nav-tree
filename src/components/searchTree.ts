@@ -13,7 +13,7 @@ export const getAllNodeKeys = (node: ITreeDataItem): string[] => {
     return result;
 }
 
-const findNode = (root: ITreeDataItem, key: string): ITreeDataItem | undefined => {
+export const findNode = (root: ITreeDataItem, key: string): ITreeDataItem | undefined => {
     if (root.key === key) {
         return root;
     }

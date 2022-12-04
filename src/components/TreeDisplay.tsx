@@ -14,7 +14,7 @@ export default function TreeDisplay() {
   const [expanded, setExpanded] = React.useState<string[]>([]);
   const [selected, setSelected] = React.useState<string[]>([]);
   const [displayTree, setDisplayTree] = React.useState<ITreeDataItem>(treeDataRoot)
-  const {searchTerm} = React.useContext(AppContext);
+  const {searchTerm, pinnedItems, setPinnedItems} = React.useContext(AppContext);
 
   const handleToggle = (event: React.SyntheticEvent, nodeIds: string[]) => {
     setExpanded(nodeIds);
@@ -33,7 +33,7 @@ export default function TreeDisplay() {
   };
 
   const handelPinClick = (key: string) => {
-    console.log("pin" + key);
+    setPinnedItems([...pinnedItems, key]);
   }
 
   // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page

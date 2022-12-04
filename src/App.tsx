@@ -7,19 +7,22 @@ import { NotFound } from './pages/NotFound';
 
 interface IAppContext {
     searchTerm: string;
-    setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+    pinnedItems: string[];
+    setPinnedItems: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export const AppContext = React.createContext<IAppContext>(null!);
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
+  const [pinnedItems, setPinnedItems] = React.useState<string[]>([]);
 
   return (
     <div className="App">
       <CssBaseline/>
       <AppContext.Provider value={{
-        searchTerm, setSearchTerm
+        searchTerm, setSearchTerm, pinnedItems, setPinnedItems
       }}>
       <BRouter>
         <Routes>
