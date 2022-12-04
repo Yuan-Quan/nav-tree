@@ -13,6 +13,7 @@ import { findNode, getNodeBreadcrumb } from './searchTree';
 import { treeDataRoot } from '../assets/TreeData';
 import { redirectTopLevel } from './TreeDisplay';
 import { getNodeIcon } from './TreeItemDisplay';
+import { Tooltip } from '@mui/material';
 
 interface ILItemProps {
     node: string
@@ -20,6 +21,20 @@ interface ILItemProps {
 
 export const PinnedItems = () => {
     const {pinnedItems, setPinnedItems} = React.useContext(AppContext);
+
+    React.useEffect(() => {
+        // recall pinned items from local storage
+        const localPinnedItems = localStorage.getItem("pinnedItems");
+        console.log("localPinnedItems", localPinnedItems);
+        if (localPinnedItems) {
+            setPinnedItems(JSON.parse(localPinnedItems));
+        }
+    }, []);
+
+    React.useEffect(() => {
+        // presist pinned items to local storage
+        window.localStorage.setItem("pinnedItems", JSON.stringify(pinnedItems));
+    }, [pinnedItems]);
 
     const handleDelete = (key: string) => {
         setPinnedItems(pinnedItems.filter((item) => item !== key));
@@ -31,9 +46,11 @@ export const PinnedItems = () => {
         return (
             <ListItem
               secondaryAction={
+                <Tooltip title="Unpin Item" placement='right' arrow>
                 <IconButton edge="end" aria-label="delete" onClick={() => {handleDelete(props.node)}}>
                   <DeleteIcon />
                 </IconButton>
+                </Tooltip>
               }
             >
               <ListItemAvatar>
