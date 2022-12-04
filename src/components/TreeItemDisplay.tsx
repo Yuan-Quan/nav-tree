@@ -12,21 +12,22 @@ export interface ITreeItemProps {
 
 }
 
+export const getNodeIcon = (type: string) => {
+      switch(type) {
+        case "category": return <FolderIcon className="treeItemIcon"/>;
+        case "file": return <DescriptionIcon className="treeItemIcon"/>;
+        case "sheet": return <ListAltIcon className="treeItemIcon"/>;
+        default: return <LinkIcon className="treeItemIcon"/>
+      }
+}
+
 export const TreeItemDisplay = (props: any) => {
     return(
         <Box className="treeItem">
             <Box className="treeItemLable">
-                {(() => {
-                  switch(props.type) {
-                    case "category": return <FolderIcon className="treeItemIcon"/>;
-                    case "file": return <DescriptionIcon className="treeItemIcon"/>;
-                    case "sheet": return <ListAltIcon className="treeItemIcon"/>;
-                    default: return <LinkIcon className="treeItemIcon"/>
-                  }
-                })()}
-            <a target="_top" href={props.url}>{props.label}</a>
+                {getNodeIcon(props.type)}
+                <a target="_top" href={props.url}>{props.label}</a>
             </Box>
-            <Box sx={{width: 10}}></Box>
             <Tooltip title="Pin to the Top" placement="right" arrow>
             <IconButton className="pinButton" onClick={props.onPinClick}>
                 <PushPinIcon/>

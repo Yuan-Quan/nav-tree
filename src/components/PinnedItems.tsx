@@ -12,6 +12,7 @@ import { AppContext } from '../App';
 import { findNode, getNodeBreadcrumb } from './searchTree';
 import { treeDataRoot } from '../assets/TreeData';
 import { redirectTopLevel } from './TreeDisplay';
+import { getNodeIcon } from './TreeItemDisplay';
 
 interface ILItemProps {
     node: string
@@ -26,6 +27,7 @@ export const PinnedItems = () => {
 
     const LItem = (props: ILItemProps) => {
         const node = findNode(treeDataRoot, props.node)
+        if (node) {
         return (
             <ListItem
               secondaryAction={
@@ -35,7 +37,7 @@ export const PinnedItems = () => {
               }
             >
               <ListItemAvatar>
-                  <FolderIcon />
+                {getNodeIcon(node.nodetype)}
               </ListItemAvatar>
               <ListItemText
                 primary={node?.label}
@@ -43,6 +45,10 @@ export const PinnedItems = () => {
                 onClick={() => {redirectTopLevel(node?.url)}}
               />
             </ListItem>
+        )
+        }
+        return(
+            <ListItem></ListItem>
         )
     }
     return (
