@@ -37,7 +37,7 @@ export const PinnedItems = () => {
         return (
             <ListItem
               secondaryAction={
-                <Tooltip title="Unpin Item" placement='right' arrow>
+                <Tooltip title="从顶部取消固定" placement='right' arrow>
                 <IconButton edge="end" aria-label="delete" onClick={() => {handleDelete(props.node)}}>
                   <DeleteIcon />
                 </IconButton>
@@ -66,7 +66,7 @@ export const PinnedItems = () => {
         <div>
             <Box className='pinnedBox'>
             <Typography variant='h6' align='left' mt='1em'>
-                Pinned Items
+                固定的项目
             </Typography>
              <List>
                 {pinnedItems.map((item, index) => {

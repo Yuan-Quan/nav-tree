@@ -8,7 +8,7 @@ export const Main = () => {
     return (
         <Box className="mainPage">
             <Typography variant="h4" align="left"> 三.全过程造价咨询管理 </Typography>
-            <Typography align="left" variant="h6"> 导航选单 </Typography>
+            <Typography align="left" variant="h6" mt={2}> 导航选单 </Typography>
             <Box className="sectionSearchPin">
             <SearchBar />
             <PinnedItems />

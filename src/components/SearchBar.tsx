@@ -24,7 +24,7 @@ export const SearchBar = () => {
               id="main-search-box"
               freeSolo
               options={[]}
-              renderInput={(params) => <TextField {...params} label="Search" />}
+              renderInput={(params) => <TextField {...params} label="搜寻" />}
               onInputChange={handleSearchChange}
             />
         </div>

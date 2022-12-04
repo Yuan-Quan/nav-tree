@@ -51,7 +51,7 @@ export default function TreeDisplay() {
   };
 
   const handleExpandAllClick = () => { setExpanded((oldExpanded) =>
-      oldExpanded.length === 0 ? getAllNodeKeys(displayTree) : [],
+      oldExpanded.length <=1 ? getAllNodeKeys(displayTree) : ['root'],
     );
   };
 
@@ -61,8 +61,6 @@ export default function TreeDisplay() {
     }
     setPinnedItems([...pinnedItems, key]);
   }
-
-  
 
   const renderTree = (node: ITreeDataItem) => (
     <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} type={node.nodetype} onPinClick={() => handelPinClick(node.key)} />}>
@@ -101,10 +99,10 @@ export default function TreeDisplay() {
         </Typography>
         <Box className='titleButtons'>
         <Button onClick={handleExpandAllClick}>
-          {expanded.length === 0 ? 'Expand all' : 'Collapse all'}
+          {expanded.length <= 1 ? '展开全部' : '折叠全部'}
         </Button>
         <Button>
-          Pin Selected
+          固定选中的项目
         </Button>
         </Box>
       </Box>

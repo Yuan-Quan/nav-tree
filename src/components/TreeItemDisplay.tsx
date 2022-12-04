@@ -28,7 +28,7 @@ export const TreeItemDisplay = (props: any) => {
                 {getNodeIcon(props.type)}
                 <a target="_top" href={props.url}>{props.label}</a>
             </Box>
-            <Tooltip title="Pin to the Top" placement="right" arrow>
+            <Tooltip title="固定到顶部" placement="right" arrow>
             <IconButton className="pinButton" onClick={props.onPinClick}>
                 <PushPinIcon/>
             </IconButton>
