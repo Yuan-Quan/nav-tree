@@ -1,0 +1,26 @@
+.treeItem
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.treeItem a
+{
+    color: black;
+    text-decoration: none;
+    margin-left: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.pinButton
+{
+    visibility: hidden;
+}
+
+.treeItem:hover > .pinButton
+{
+    visibility: visible;
+}
+

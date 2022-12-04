@@ -72,7 +72,7 @@ export default function TreeDisplay() {
   },[searchTerm])
 
   return (
-    <Box sx={{ height: 270, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}>
+    <Box>
       <Box sx={{ mb: 1 }}>
         <Button onClick={handleExpandAllClick}>
           {expanded.length === 0 ? 'Expand all' : 'Collapse all'}
