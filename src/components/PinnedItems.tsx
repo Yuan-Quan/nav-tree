@@ -13,7 +13,7 @@ import { findNode, getNodeBreadcrumb } from './searchTree';
 import { treeDataRoot } from '../assets/TreeData';
 import { redirectTopLevel } from './TreeDisplay';
 import { getNodeIcon } from './TreeItemDisplay';
-import { Tooltip } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 
 interface ILItemProps {
     node: string
@@ -59,9 +59,13 @@ export const PinnedItems = () => {
             <ListItem></ListItem>
         )
     }
+    if (pinnedItems.length == 0) {
+        return(<div></div>)
+    }
     return (
         <div>
-            <Typography>
+            <Box className='pinnedBox'>
+            <Typography variant='h6' align='left' mt='1em'>
                 Pinned Items
             </Typography>
              <List>
@@ -69,6 +73,7 @@ export const PinnedItems = () => {
                         return (<LItem node={item}/>)
     })}
             </List>
+            </Box>
         </div>
     )
 }

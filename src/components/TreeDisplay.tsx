@@ -9,6 +9,8 @@ import { ITreeDataItem, treeDataRoot } from '../assets/TreeData';
 import { AppContext } from '../App';
 import { getAllNodeKeys, getNodeSearchTerm, getSearchResultKeys, getSearchResultTree } from './searchTree';
 import { TreeItemDisplay } from './TreeItemDisplay';
+import { Typography } from '@mui/material';
+import './TreeDisplay.css';
 
 // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page
 // if specify target="_parent", browser won't allow it because of the same origin policy
@@ -93,10 +95,18 @@ export default function TreeDisplay() {
 
   return (
     <Box>
-      <Box sx={{ mb: 1 }}>
+      <Box className='title'>
+        <Typography align='left' variant='h6'>
+          导航树
+        </Typography>
+        <Box className='titleButtons'>
         <Button onClick={handleExpandAllClick}>
           {expanded.length === 0 ? 'Expand all' : 'Collapse all'}
         </Button>
+        <Button>
+          Pin Selected
+        </Button>
+        </Box>
       </Box>
       <TreeView
         aria-label="tree-view"

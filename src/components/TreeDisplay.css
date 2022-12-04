@@ -1,0 +1,17 @@
+.title
+{
+    margin-top: 1em;
+    display: flex;
+}
+
+.titleButtons
+{
+    margin-left: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.titleButtons button
+{
+    margin-left: 0.5em;
+}
