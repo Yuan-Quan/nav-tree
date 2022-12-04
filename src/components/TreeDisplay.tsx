@@ -25,13 +25,16 @@ export default function TreeDisplay() {
   };
 
   const handleFocus = (event: React.SyntheticEvent, nodeId: string) => {
-    // update the breadcrumb 
   };
 
   const handleExpandAllClick = () => { setExpanded((oldExpanded) =>
       oldExpanded.length === 0 ? getAllNodeKeys(displayTree) : [],
     );
   };
+
+  const handelPinClick = (key: string) => {
+    console.log("pin" + key);
+  }
 
   // if I use a <a/> tag, href normally, it will redirect the react app instead of the magicflu page
   // if specify target="_parent", browser won't allow it because of the same origin policy
@@ -51,7 +54,7 @@ export default function TreeDisplay() {
   }
 
   const renderTree = (node: ITreeDataItem) => (
-    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} />}>
+    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} onPinClick={() => handelPinClick(node.key)} />}>
       {Array.isArray(node.nodes)
         // it's a recursive call, this is bad, some day I'll fix it
         ? node.nodes.map((child) => renderTree(child))
