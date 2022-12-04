@@ -1,21 +1,25 @@
 .treeItem
 {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+}
+
+.treeItemLable
+{
+    display: flex;
+    align-items: center;
 }
 
 .treeItem a
 {
     color: black;
     text-decoration: none;
-    margin-left: 1em;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-left: 0.5em;
 }
 
 .pinButton
 {
+    justify-self: flex-end;
     visibility: hidden;
 }
 

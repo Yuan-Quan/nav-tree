@@ -54,7 +54,7 @@ export default function TreeDisplay() {
   }
 
   const renderTree = (node: ITreeDataItem) => (
-    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} onPinClick={() => handelPinClick(node.key)} />}>
+    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} type={node.nodetype} onPinClick={() => handelPinClick(node.key)} />}>
       {Array.isArray(node.nodes)
         // it's a recursive call, this is bad, some day I'll fix it
         ? node.nodes.map((child) => renderTree(child))
@@ -64,7 +64,13 @@ export default function TreeDisplay() {
 
   React.useEffect(()=>{
     // when search term changes, update the display tree
-    setDisplayTree(getSearchResultTree(treeDataRoot, searchTerm.split(" ")));
+    if (searchTerm) {
+      setDisplayTree(getSearchResultTree(treeDataRoot, searchTerm.split(" ")));
+    }
+    else
+    {
+      setDisplayTree(treeDataRoot);
+    }
     // auto expand all nodes, when search term is not ''
     if (searchTerm !== '') {
       setExpanded(getAllNodeKeys(displayTree));
