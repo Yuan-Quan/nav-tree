@@ -59,9 +59,11 @@ export const PinnedItems = () => {
             <ListItem></ListItem>
         )
     }
+
     if (pinnedItems.length == 0) {
         return(<div></div>)
     }
+
     return (
         <div>
             <Box className='pinnedBox'>
