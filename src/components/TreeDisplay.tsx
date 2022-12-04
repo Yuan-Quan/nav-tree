@@ -50,6 +50,9 @@ export default function TreeDisplay() {
   };
 
   const handelPinClick = (key: string) => {
+    if (pinnedItems.includes(key)) {
+      return
+    }
     setPinnedItems([...pinnedItems, key]);
   }
 
