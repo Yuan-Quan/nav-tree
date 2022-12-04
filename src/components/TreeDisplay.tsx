@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import { ITreeDataItem, treeDataRoot } from '../assets/TreeData';
 import { AppContext } from '../App';
 import { getAllNodeKeys, getNodeSearchTerm, getSearchResultKeys, getSearchResultTree } from './searchTree';
+import { TreeItemDisplay } from './TreeItemDisplay';
 
 export default function TreeDisplay() {
   const [expanded, setExpanded] = React.useState<string[]>([]);
@@ -50,7 +51,7 @@ export default function TreeDisplay() {
   }
 
   const renderTree = (node: ITreeDataItem) => (
-    <TreeItem key={node.key} nodeId={node.key} label={<a onClick={() => {redirectTopLevel(node.url)}} target="_parent" href="node.url">{node.label}</a>}>
+    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} />}>
       {Array.isArray(node.nodes)
         // it's a recursive call, this is bad, some day I'll fix it
         ? node.nodes.map((child) => renderTree(child))
