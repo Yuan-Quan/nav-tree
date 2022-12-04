@@ -23,15 +23,6 @@ export const PinnedItems = () => {
     const {pinnedItems, setPinnedItems} = React.useContext(AppContext);
 
     React.useEffect(() => {
-        // recall pinned items from local storage
-        const localPinnedItems = localStorage.getItem("pinnedItems");
-        console.log("localPinnedItems", localPinnedItems);
-        if (localPinnedItems) {
-            setPinnedItems(JSON.parse(localPinnedItems));
-        }
-    }, []);
-
-    React.useEffect(() => {
         // presist pinned items to local storage
         window.localStorage.setItem("pinnedItems", JSON.stringify(pinnedItems));
     }, [pinnedItems]);

@@ -16,7 +16,11 @@ export const AppContext = React.createContext<IAppContext>(null!);
 
 function App() {
   const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const [pinnedItems, setPinnedItems] = React.useState<string[]>([]);
+  const [pinnedItems, setPinnedItems] = React.useState<string[]>(() => {
+    // recall from local storage (if available)
+    const localData = window.localStorage.getItem("pinnedItems");
+    return localData ? JSON.parse(localData) : [];
+  });
 
   return (
     <div className="App">
