@@ -45,7 +45,7 @@ export const PinnedItems = () => {
               }
             >
               <ListItemAvatar>
-                {getNodeIcon(node.nodetype)}
+                {getNodeIcon(node)}
               </ListItemAvatar>
               <ListItemText
                 primary={node?.label}

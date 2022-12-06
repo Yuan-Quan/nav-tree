@@ -3,6 +3,7 @@ import { MenuItem, Box, Card, CardActionArea, CardHeader, Avatar, IconButton, Me
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { red } from "@mui/material/colors"
 import { ITreeDataItem } from "../assets/TreeData"
+import { getNodeIcon } from './TreeItemDisplay';
 
 
 export const GridCard = (props: any) => {
@@ -40,11 +41,7 @@ export const GridCard = (props: any) => {
               {...(use_dropdown ? { onClick: handleClick } : { href: node.url })}
             >
               <CardHeader
-                avatar={
-                  <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                    R
-                  </Avatar>
-                }
+                avatar={getNodeIcon(node.type)}
                 action={
                   <IconButton aria-label="settings">
                     <MoreVertIcon />

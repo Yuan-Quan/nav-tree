@@ -63,7 +63,7 @@ export default function TreeDisplay() {
   }
 
   const renderTree = (node: ITreeDataItem) => (
-    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay label={node.label} url={node.url} key={node.key} type={node.nodetype} onPinClick={() => handelPinClick(node.key)} />}>
+    <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay node={node} onPinClick={() => handelPinClick(node.key)} />}>
       {Array.isArray(node.nodes)
         // it's a recursive call, this is bad, some day I'll fix it
         ? node.nodes.map((child) => renderTree(child))
