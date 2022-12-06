@@ -4,13 +4,20 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { red } from "@mui/material/colors"
 import { ITreeDataItem } from "../assets/TreeData"
 
+
 export const GridCard = (props: any) => {
     const node = props.node;
     const use_dropdown = Array.isArray(node.nodes) && node.nodes.length > 0;
+
+    function redirect (url: string | undefined) {
+      if (window && url) window.location.href = url
+      return true;
+    }
+
     const renderMenu = (node: ITreeDataItem) => {
         if (Array.isArray(node.nodes)) {
           return node.nodes.map((child) => {
-            return <MenuItem>{child.label}</MenuItem>
+            return <MenuItem onClick={() => {redirect(child.url)}}>{child.label}</MenuItem>
           })
         }
     } 
