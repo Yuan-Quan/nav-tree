@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { GridAccordionItem } from './GridAccordionItem';
 import { treeDataRoot } from '../assets/TreeData';
+import { Icon, IconButton } from '@mui/material';
 
 interface IAccordionContext {
   expanded: string | false;
@@ -21,7 +22,9 @@ export function GridAccordions() {
     return treeDataRoot.nodes.map((node) => {
       // why bother rendering an accordion item if there are no nodes?
       if (Array.isArray(node.nodes)) {
-        return <GridAccordionItem title={node.label} secondary={node.nodetype} root={node}/> 
+        return (
+          <GridAccordionItem title={node.label} secondary={node.nodetype} root={node}/> 
+        )
       }
     })
   }

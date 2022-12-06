@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material"
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Typography } from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { GridPapers } from "./GridPapers";
 import { AccordionContext } from "./GridAccordions";
@@ -30,6 +30,6 @@ export const GridAccordionItem = (props: IAccordionItemProps) => {
         <AccordionDetails>
             <GridPapers root={props.root}/>
         </AccordionDetails>
-      </Accordion>
+        </Accordion>
     )
 }

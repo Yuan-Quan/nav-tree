@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material"
+import { Box, IconButton, Paper } from "@mui/material"
 import { ITreeDataItem } from "../assets/TreeData"
 
 interface IGridPapersProps {
@@ -11,9 +11,11 @@ export const GridPapers = (props: IGridPapersProps) => {
       if (Array.isArray(root.nodes)) {
         return root.nodes.map((node) => {
             return (
+              <IconButton>
                 <Paper elevation={3} sx={{ p: 2, m: 1, flexGrow: 1 }}>
                     {node.label}
                 </Paper>
+              </IconButton>
             )
         })
       }
