@@ -3,9 +3,11 @@ import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { GridPapers } from "./GridPapers";
 import { AccordionContext } from "./GridAccordions";
+import { ITreeDataItem } from '../assets/TreeData';
 
 interface IAccordionItemProps {
     title: string;
+    root: ITreeDataItem;
     secondary?: string;
 }
 
@@ -26,7 +28,7 @@ export const GridAccordionItem = (props: IAccordionItemProps) => {
           <Typography sx={{ color: 'text.secondary' }}>{props.secondary}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-            <GridPapers/>
+            <GridPapers root={props.root}/>
         </AccordionDetails>
       </Accordion>
     )

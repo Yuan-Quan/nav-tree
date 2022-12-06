@@ -16,11 +16,20 @@ export const AccordionContext = React.createContext<IAccordionContext>(null!);
 
 export function GridAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
+  
+  const renderAccordionItems = () => {
+    return treeDataRoot.nodes.map((node) => {
+      // why bother rendering an accordion item if there are no nodes?
+      if (Array.isArray(node.nodes)) {
+        return <GridAccordionItem title={node.label} secondary={node.nodetype} root={node}/> 
+      }
+    })
+  }
 
   return (
     <div>
       <AccordionContext.Provider value={{ expanded, setExpanded }}>
-      {treeDataRoot.nodes.map((node) => {return <GridAccordionItem title={node.label} secondary={node.nodetype}/>})}
+        {renderAccordionItems()}
       </AccordionContext.Provider>
     </div>
   );

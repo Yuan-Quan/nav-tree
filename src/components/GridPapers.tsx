@@ -1,6 +1,24 @@
 import { Box, Paper } from "@mui/material"
+import { ITreeDataItem } from "../assets/TreeData"
 
-export const GridPapers = () => {
+interface IGridPapersProps {
+  root: ITreeDataItem
+}
+
+export const GridPapers = (props: IGridPapersProps) => {
+
+    const renderPapers = (root: ITreeDataItem) => {
+      if (Array.isArray(root.nodes)) {
+        return root.nodes.map((node) => {
+            return (
+                <Paper elevation={3} sx={{ p: 2, m: 1, flexGrow: 1 }}>
+                    {node.label}
+                </Paper>
+            )
+        })
+      }
+    }
+
     return (
     <Box
       sx={{
@@ -13,19 +31,7 @@ export const GridPapers = () => {
         },
       }}
     >
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
-      <Paper />
+      {renderPapers(props.root)}
     </Box>
     )
 }
