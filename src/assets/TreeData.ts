@@ -76,6 +76,12 @@ export const treeDataRoot = {
             }
           ]
 
+        },
+        {
+          key: '4.4',
+          label: 'test',
+          nodetype: '22',
+
         }
       ]
     }

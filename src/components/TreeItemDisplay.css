@@ -12,7 +12,7 @@
 
 .treeItem a
 {
-    color: black;
+    color: randomColor();
     text-decoration: none;
     margin-left: 0.5em;
 }
