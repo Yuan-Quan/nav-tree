@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Typography } from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { GridPapers } from "./GridPapers";
+import { GridCards } from "./GridCards";
 import { AccordionContext } from "./GridAccordions";
 import { ITreeDataItem } from '../assets/TreeData';
 
@@ -28,7 +28,7 @@ export const GridAccordionItem = (props: IAccordionItemProps) => {
           <Typography sx={{ color: 'text.secondary' }}>{props.secondary}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-            <GridPapers root={props.root}/>
+            <GridCards root={props.root}/>
         </AccordionDetails>
         </Accordion>
     )
