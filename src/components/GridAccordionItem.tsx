@@ -5,7 +5,6 @@ import { GridPapers } from "./GridPapers";
 import { AccordionContext } from "./GridAccordions";
 
 interface IAccordionItemProps {
-    expanded: string | false;
     title: string;
     secondary?: string;
 }
@@ -13,7 +12,6 @@ interface IAccordionItemProps {
 export const GridAccordionItem = (props: IAccordionItemProps) => {
     const {expanded, setExpanded} = React.useContext(AccordionContext);
     const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-        console.log("handleChange");
         setExpanded(isExpanded ? panel : false);
     };
 
