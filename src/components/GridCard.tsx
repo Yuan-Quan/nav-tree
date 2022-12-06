@@ -41,7 +41,7 @@ export const GridCard = (props: any) => {
               {...(use_dropdown ? { onClick: handleClick } : { href: node.url })}
             >
               <CardHeader
-                avatar={getNodeIcon(node.type)}
+                avatar={getNodeIcon(node)}
                 action={
                   <IconButton aria-label="settings">
                     <MoreVertIcon />
