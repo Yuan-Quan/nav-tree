@@ -6,84 +6,704 @@ export interface ITreeDataItem {
   url?: string;
 }
 
-export const treeDataRoot = {
-  key: 'root',
-  label: "三.全过程造价咨询管理",
-  nodetype: "category",
-  url: '',
-  nodes: [
-    {
-      key: '1',
-      label: "台账使用说明",
-      nodetype: "file",
-      url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E5%8F%B0%E8%B4%A6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E&nodeId=18&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
-    },
-    {
-      key: '2',
-      label: '项目概况',
-      nodetype: "file",
-      url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E9%A1%B9%E7%9B%AE%E6%A6%82%E5%86%B5&nodeId=265&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
-    },
-    {
-      key: '3',
-      label: '咨询合同',
-      nodetype: "file",
-      url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E5%92%A8%E8%AF%A2%E5%90%88%E5%90%8C&nodeId=222&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
-    },
-    {
-      key: '4',
-      label: '戊爱小区（龙熙一号项目）',
-      nodetype: "category",
-      url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E6%88%8A%E7%88%B1%E5%B0%8F%E5%8C%BA%EF%BC%88%E9%BE%99%E7%86%99%E4%B8%80%E5%8F%B7%E9%A1%B9%E7%9B%AE%EF%BC%89&nodeId=1&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7',
-      nodes: [
-        {
-          key: '4.1',
-          label: '项目概况',
-          nodetype: "file",
-          url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E9%A1%B9%E7%9B%AE%E6%A6%82%E5%86%B5&nodeId=12&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
-        },
-        {
-          key: '4.2',
-          label: '收发文登记',
-          nodetype: "category",
-          url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E6%94%B6%E5%8F%91%E6%96%87%E7%99%BB%E8%AE%B0&nodeId=6&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7',
-          nodes: [
+export const treeDataRoot = 
+{
+        "label": "三.全过程造价咨询管理",
+        "key": "root",
+        "url": "",
+        "nodetype": "category",
+        "nodes": [
             {
-              key: '4.2.1',
-              label: '收文',
-              nodetype: "file",
-              url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E6%94%B6%E6%96%87&nodeId=194&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
+                "label": "NavTree_debug",
+                "key": "266",
+                "url": "",
+                "nodetype": "file"
             },
             {
-              key: '4.2.2',
-              label: '发文',
-              nodetype: "file",
-              url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E5%8F%91%E6%96%87&nodeId=195&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7'
-            }
-          ]
-        },
-        {
-          key: '4.3',
-          label: '施工合同管理',
-          nodetype: 'category',
-          url: '/magicflu/html/form/appController.jsp?appLabel=%E4%B8%89.%E5%85%A8%E8%BF%87%E7%A8%8B%E9%80%A0%E4%BB%B7%E5%92%A8%E8%AF%A2%E7%AE%A1%E7%90%86&nodeLabel=%E6%96%BD%E5%B7%A5%E5%90%88%E5%90%8C%E7%AE%A1%E7%90%86&nodeId=22&spaceId=f416a565-6aa6-414d-bcde-70a877f7c84a&appId=2b07706b-022d-400c-b2af-4cab8dc27dd7',
-          nodes: [
+                "label": "台账使用说明",
+                "key": "18",
+                "url": "",
+                "nodetype": "file"
+            },
             {
-              key: '4.3.1',
-              label: '合同台账统计（执行报表操作可刷新）',
-              nodetype: 'file',
-              url: ''
-            }
-          ]
-
-        },
-        {
-          key: '4.4',
-          label: 'test',
-          nodetype: '22',
-
-        }
-      ]
+                "label": "项目概况",
+                "key": "265",
+                "url": "",
+                "nodetype": "file"
+            },
+            {
+                "label": "咨询合同",
+                "key": "222",
+                "url": "",
+                "nodetype": "file"
+            },
+            {
+                "label": "戊爱小区（龙熙一号项目）",
+                "key": "1",
+                "url": "",
+                "nodetype": "category",
+                "nodes": [
+                    {
+                        "label": "项目概况",
+                        "key": "12",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "收发文登记",
+                        "key": "6",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "收文",
+                                "key": "194",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "发文",
+                                "key": "195",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "图纸管理",
+                        "key": "196",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "施工合同管理",
+                        "key": "22",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "合同台账统计（执行报表操作可刷新）",
+                                "key": "157",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "施工合同台账",
+                                "key": "7",
+                                "url": "",
+                                "nodetype": "category",
+                                "nodes": [
+                                    {
+                                        "label": "A地块",
+                                        "key": "159",
+                                        "url": "",
+                                        "nodetype": "category",
+                                        "nodes": [
+                                            {
+                                                "label": "A地块跨期",
+                                                "key": "178",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "A1地块",
+                                                "key": "163",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "A2地块",
+                                                "key": "164",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "label": "B地块",
+                                        "key": "160",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "C地块",
+                                        "key": "161",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "D地块",
+                                        "key": "162",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "BCD跨期",
+                                        "key": "179",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "戊爱跨期",
+                                        "key": "190",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "label": "询价台账",
+                        "key": "169",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "项目前期",
+                        "key": "205",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "合约规划",
+                                "key": "203",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "目标成本",
+                                "key": "202",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "设计管理",
+                                "key": "223",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "招标阶段",
+                        "key": "206",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "招投标计划",
+                                "key": "23",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "总包预算",
+                                "key": "168",
+                                "url": "",
+                                "nodetype": "category",
+                                "nodes": [
+                                    {
+                                        "label": "总包预算编审流程",
+                                        "key": "263",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "总包预算编制",
+                                        "key": "209",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "总包预算对量",
+                                        "key": "166",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "总包预算二审",
+                                        "key": "210",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "总包合同清单",
+                                        "key": "165",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    }
+                                ]
+                            },
+                            {
+                                "label": "招投标及清标台帐",
+                                "key": "13",
+                                "url": "",
+                                "nodetype": "category",
+                                "nodes": [
+                                    {
+                                        "label": "清单控制价及清标审批流程",
+                                        "key": "172",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "招投标及清标台账查询",
+                                        "key": "173",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "label": "施工阶段",
+                        "key": "207",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "测算台账",
+                                "key": "11",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "进度款审核支付台账",
+                                "key": "17",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "签证变更台账",
+                                "key": "21",
+                                "url": "",
+                                "nodetype": "category",
+                                "nodes": [
+                                    {
+                                        "label": "指令台账填报及审核流程",
+                                        "key": "149",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "台账分期统计(执行报表操作)",
+                                        "key": "155",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "台账分合同统计(执行报表操作)",
+                                        "key": "215",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "指令台账查询",
+                                        "key": "16",
+                                        "url": "",
+                                        "nodetype": "category",
+                                        "nodes": [
+                                            {
+                                                "label": "A地块",
+                                                "key": "140",
+                                                "url": "",
+                                                "nodetype": "category",
+                                                "nodes": [
+                                                    {
+                                                        "label": "A1地块",
+                                                        "key": "175",
+                                                        "url": "",
+                                                        "nodetype": "file"
+                                                    },
+                                                    {
+                                                        "label": "A2地块",
+                                                        "key": "176",
+                                                        "url": "",
+                                                        "nodetype": "file"
+                                                    },
+                                                    {
+                                                        "label": "A地块跨期",
+                                                        "key": "177",
+                                                        "url": "",
+                                                        "nodetype": "file"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "label": "B地块",
+                                                "key": "141",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "C地块",
+                                                "key": "142",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "D地块",
+                                                "key": "143",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "BCD跨期",
+                                                "key": "180",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            },
+                                            {
+                                                "label": "戊爱跨期",
+                                                "key": "189",
+                                                "url": "",
+                                                "nodetype": "file"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "label": "约谈台账",
+                                "key": "15",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "扣款台账",
+                                "key": "20",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "无合同付款台账",
+                                "key": "19",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "实测实量或巡场记录",
+                                "key": "14",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "零星工作台账",
+                                "key": "136",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "付款台账",
+                                "key": "148",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "结算阶段",
+                        "key": "208",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "结算台账填报及审核",
+                                "key": "150",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "合同结算统计表",
+                                "key": "156",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "结算台账",
+                                "key": "8",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "项目后评估",
+                        "key": "211",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "复盘报告",
+                                "key": "213",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "项目指标",
+                                "key": "204",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "咨询费结算",
+                        "key": "212",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "咨询费支付台账",
+                                "key": "24",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "提成支付台账",
+                                "key": "25",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "工程进度展示",
+                        "key": "224",
+                        "url": "",
+                        "nodetype": "file"
+                    }
+                ]
+            },
+            {
+                "label": "水富市中医院(EPC)建设项目",
+                "key": "227",
+                "url": "",
+                "nodetype": "category",
+                "nodes": [
+                    {
+                        "label": "项目概况",
+                        "key": "229",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "往来函件",
+                        "key": "228",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "图纸管理",
+                        "key": "258",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "咨询合同",
+                        "key": "230",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "工程询价",
+                        "key": "238",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "询价台账",
+                                "key": "237",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "材料询价",
+                                "key": "239",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "施工合同",
+                        "key": "235",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "测算及估算",
+                        "key": "253",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "测算及估算编审流程",
+                                "key": "252",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "测算及估算台账",
+                                "key": "232",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "工程进度款",
+                        "key": "257",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "进度款审批流程",
+                                "key": "256",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "进度款审核台账",
+                                "key": "254",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "进度款统计",
+                                "key": "255",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "总包预算",
+                        "key": "247",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "总包施工图预算编审",
+                                "key": "262",
+                                "url": "",
+                                "nodetype": "category",
+                                "nodes": [
+                                    {
+                                        "label": "总包施工图预算编审流程",
+                                        "key": "248",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    },
+                                    {
+                                        "label": "总包施工图预算编制",
+                                        "key": "260",
+                                        "url": "",
+                                        "nodetype": "file"
+                                    }
+                                ]
+                            },
+                            {
+                                "label": "施工图预算一审",
+                                "key": "249",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "施工图预算二审",
+                                "key": "250",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "总包合同清单",
+                                "key": "251",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "招投标及清标",
+                        "key": "231",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "清单控制价录入及审核",
+                                "key": "246",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "招标清单及控制价",
+                                "key": "244",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "投标文件及清标",
+                                "key": "245",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "签证变更",
+                        "key": "236",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "签证变更录入及审核",
+                                "key": "240",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "签证变更台账",
+                                "key": "241",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "扣款台账",
+                        "key": "264",
+                        "url": "",
+                        "nodetype": "file"
+                    },
+                    {
+                        "label": "工程结算",
+                        "key": "233",
+                        "url": "",
+                        "nodetype": "category",
+                        "nodes": [
+                            {
+                                "label": "结算录入及审核",
+                                "key": "242",
+                                "url": "",
+                                "nodetype": "file"
+                            },
+                            {
+                                "label": "结算台账",
+                                "key": "243",
+                                "url": "",
+                                "nodetype": "file"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "巡场和收方日志",
+                        "key": "234",
+                        "url": "",
+                        "nodetype": "file"
+                    }
+                ]
+            },
+        ]
     }
-  ]
-};

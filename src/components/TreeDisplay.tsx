@@ -79,6 +79,7 @@ export default function TreeDisplay() {
     else
     {
       setDisplayTree(treeDataRoot);
+      setExpanded(['root'])
     }
     // auto expand all nodes, when search term is not ''
     if (searchTerm !== '') {

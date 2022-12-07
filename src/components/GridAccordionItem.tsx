@@ -18,7 +18,7 @@ export const GridAccordionItem = (props: IAccordionItemProps) => {
     };
 
     return (
-        <Accordion expanded={expanded === props.title} onChange={handleChange(props.title)}>
+        <Accordion expanded={(expanded === props.title) || expanded==true} onChange={handleChange(props.title)}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
         >

@@ -1,5 +1,4 @@
-
-
+import json
 from bs4 import BeautifulSoup
 
 
@@ -47,7 +46,12 @@ def main():
 
     root = dfs(soup)
 
-    print(root)
+    jsonstring = json.dumps(
+        root, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
+
+    # write it to a file
+    with open("/home/cirno/source/repos/nav-tree/scripts/data.json", "w") as f:
+        f.write(jsonstring)
 
 
 def dfs(soup):
@@ -60,7 +64,11 @@ def dfs(soup):
         node = DataTree()
         node.label = get_label(child)
         node.key = get_nodeid(child)
-        print(node.label)
+        node.url = ""
+        if child.ul is None:
+            node.nodetype = "file"
+        else:
+            node.nodetype = "category"
         nodes.append(node)
         if child.ul is not None:
             node.nodes = dfs(child)
