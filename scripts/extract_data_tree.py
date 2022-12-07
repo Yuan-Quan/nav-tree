@@ -4,7 +4,10 @@ from bs4 import BeautifulSoup
 
 
 class DataTree:
+    key: str
     lable: str
+    nodetype = "test"
+    url = ""
     nodes = []
 
 
@@ -22,7 +25,7 @@ def get_label(soup):
 
 def get_nodeid(soup):
     if soup["nodeid"] is None:
-        return -1
+        return ""
     return soup["nodeid"]
 
 
@@ -56,6 +59,7 @@ def dfs(soup):
             continue
         node = DataTree()
         node.label = get_label(child)
+        node.key = get_nodeid(child)
         print(node.label)
         nodes.append(node)
         if child.ul is not None:
