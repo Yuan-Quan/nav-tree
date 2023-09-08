@@ -76,8 +76,8 @@ export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] =
 // it's a recursive call, this is bad, some day I'll fix it
 
 export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
-    if (root.searchTerm === undefined ) {
-        console.log("query search terms")
+    const node = findNode(root, key);
+    if (node!.searchTerm === undefined ) {
          // if it doesn't have a search term cached
          // that pinyin conversion thing turns out to be quite demanding
          // so we cache that too, rather than the raw string[]
@@ -89,10 +89,10 @@ export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
                 result = result + "_" + pinyin(term, { style: pinyin.STYLE_NORMAL }).join("");        
             }
         }
-        root.searchTerm = result;  
+        node!.searchTerm = result;  
+        console.log(result);
     } 
-    console.log("chached search terms")
-    return root.searchTerm!;
+    return node!.searchTerm!;
 }
 
 export const testNodeSearchTerm = (root: ITreeDataItem, key: string, querys: string[]): boolean => {
