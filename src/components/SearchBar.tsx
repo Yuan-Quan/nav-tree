@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
-import { useContext } from "react";
+import { useMemo } from "react";
 import { AppContext } from "../App";
+import { debounce } from 'lodash'
 
 interface TreeItem {
     label: string,
@@ -13,10 +14,14 @@ interface TreeItem {
 
 export const SearchBar = () => {
     const {searchTerm, setSearchTerm} = React.useContext(AppContext);
+    const debouncedSetSearchTerm = useMemo(
+        () => debounce(setSearchTerm, 200)
+    , [])
     
     const handleSearchChange = (event: any) => {
-        setSearchTerm(event.target.value);
+        debouncedSetSearchTerm(event.target.value);
     }
+    
 
     return (
         <div>

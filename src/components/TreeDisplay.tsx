@@ -40,11 +40,6 @@ export default function TreeDisplay() {
   const [selected, setSelected] = React.useState<string[]>([]);
   const [displayTree, setDisplayTree] = React.useState<ITreeDataItem>(treeDataRoot)
   const {searchTerm, pinnedItems, setPinnedItems} = React.useContext(AppContext);
-// to contorl the throttle of tree rerendering
-const [tickThrottle, setTickThrottle] = React.useState(false);
-useInterval(() => {
-  setTickThrottle(!tickThrottle);
-}, 50);
 
   const handleToggle = (event: React.SyntheticEvent, nodeIds: string[]) => {
     setExpanded(nodeIds);
@@ -78,13 +73,6 @@ useInterval(() => {
     </TreeItem>
   )
   
-  //Throttling with useMemo hook
-  const throttledRenderTree = React.useMemo(
-    () => {return renderTree(displayTree)},
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [tickThrottle]
-  );
-
   React.useEffect(()=>{
     // when search term changes, update the display tree
     if (searchTerm) {
@@ -132,7 +120,7 @@ useInterval(() => {
         onNodeFocus={handleFocus}
         multiSelect
       >
-        {throttledRenderTree}
+        {renderTree(displayTree)}
       </TreeView>
     </Box>
   )
