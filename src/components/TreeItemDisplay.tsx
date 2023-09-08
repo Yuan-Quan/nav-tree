@@ -34,7 +34,7 @@ export const TreeItemDisplay = (props: any) => {
                 <a color='red' target="_parent" href={props.node.url}>{props.node.label}</a>
             </Box>
             <Tooltip title="固定到顶部" placement="right" arrow>
-            <IconButton className="pinButton" onClick={props.node.onPinClick}>
+            <IconButton className="pinButton" onClick={props.onPinClick}>
                 <PushPinIcon/>
             </IconButton>
             </Tooltip>
