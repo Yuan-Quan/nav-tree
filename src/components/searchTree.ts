@@ -74,19 +74,25 @@ export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] =
     return result;
 }
 // it's a recursive call, this is bad, some day I'll fix it
-// and this should be cached, now it's recalculated for all nodes when search term changes.
-// some day I'll fix it
 
 export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
-    const terms = getNodeSearchTerms(root, key);
-    const checkChCharReg = new RegExp("[\\u4E00-\\u9FFF]+","g");
-    let result = terms.join("_");
-    for (const term of terms) {
-        if (checkChCharReg.test(term)) {
-            result = result + "_" + pinyin(term, { style: pinyin.STYLE_NORMAL }).join("");        
+    if (root.searchTerm === undefined ) {
+        console.log("query search terms")
+         // if it doesn't have a search term cached
+         // that pinyin conversion thing turns out to be quite demanding
+         // so we cache that too, rather than the raw string[]
+        const terms = getNodeSearchTerms(root, key);
+        const checkChCharReg = new RegExp("[\\u4E00-\\u9FFF]+","g");
+        let result = terms.join("_");
+        for (const term of terms) {
+            if (checkChCharReg.test(term)) {
+                result = result + "_" + pinyin(term, { style: pinyin.STYLE_NORMAL }).join("");        
+            }
         }
-    }
-    return result;
+        root.searchTerm = result;  
+    } 
+    console.log("chached search terms")
+    return root.searchTerm!;
 }
 
 export const testNodeSearchTerm = (root: ITreeDataItem, key: string, querys: string[]): boolean => {

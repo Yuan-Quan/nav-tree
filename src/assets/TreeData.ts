@@ -4,6 +4,7 @@ export interface ITreeDataItem {
   nodetype: string; 
   nodes?: ITreeDataItem[];
   url?: string;
+  searchTerm?: string;
 }
 
 export const treeDataRoot = 
