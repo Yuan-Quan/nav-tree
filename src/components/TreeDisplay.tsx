@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useInterval} from "usehooks-ts"
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -29,6 +30,7 @@ export const redirectTopLevel = (url: string | undefined) => {
   }
 }
 
+
 export default function TreeDisplay() {
   const [expanded, setExpanded] = React.useState<string[]>(()=>{
     // recall the expanded nodes from local storage (if available)
@@ -38,6 +40,11 @@ export default function TreeDisplay() {
   const [selected, setSelected] = React.useState<string[]>([]);
   const [displayTree, setDisplayTree] = React.useState<ITreeDataItem>(treeDataRoot)
   const {searchTerm, pinnedItems, setPinnedItems} = React.useContext(AppContext);
+// to contorl the throttle of tree rerendering
+const [tickThrottle, setTickThrottle] = React.useState(false);
+useInterval(() => {
+  setTickThrottle(!tickThrottle);
+}, 50);
 
   const handleToggle = (event: React.SyntheticEvent, nodeIds: string[]) => {
     setExpanded(nodeIds);
@@ -61,7 +68,7 @@ export default function TreeDisplay() {
     }
     setPinnedItems([...pinnedItems, key]);
   }
-
+  
   const renderTree = (node: ITreeDataItem) => (
     <TreeItem key={node.key} nodeId={node.key} label={<TreeItemDisplay node={node} onPinClick={() => handelPinClick(node.key)} />}>
       {Array.isArray(node.nodes)
@@ -70,6 +77,13 @@ export default function TreeDisplay() {
         : null}
     </TreeItem>
   )
+  
+  //Throttling with useMemo hook
+  const throttledRenderTree = React.useMemo(
+    () => {return renderTree(displayTree)},
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [tickThrottle]
+  );
 
   React.useEffect(()=>{
     // when search term changes, update the display tree
@@ -118,7 +132,7 @@ export default function TreeDisplay() {
         onNodeFocus={handleFocus}
         multiSelect
       >
-        {renderTree(displayTree)}
+        {throttledRenderTree}
       </TreeView>
     </Box>
   )

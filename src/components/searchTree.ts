@@ -76,6 +76,7 @@ export const getNodeSearchTerms = (root: ITreeDataItem, key: string): string[] =
 // it's a recursive call, this is bad, some day I'll fix it
 
 export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
+    // this cache thing, useMemo might be able to do it more elegantly
     const node = findNode(root, key);
     if (node!.searchTerm === undefined ) {
          // if it doesn't have a search term cached
@@ -90,7 +91,6 @@ export const getNodeSearchTerm = (root: ITreeDataItem, key: string): string => {
             }
         }
         node!.searchTerm = result;  
-        console.log(result);
     } 
     return node!.searchTerm!;
 }
