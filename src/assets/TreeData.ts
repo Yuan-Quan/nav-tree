@@ -20,7 +20,7 @@ export const treeDataRoot =
                 "nodetype": "file"
             },
             {
-                "label": "台账使用说明",
+                "label": "使用说明",
                 "key": "18",
                 "url": "",
                 "nodetype": "file"

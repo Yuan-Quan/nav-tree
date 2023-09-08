@@ -4,6 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { red } from "@mui/material/colors"
 import { ITreeDataItem } from "../assets/TreeData"
 import { getNodeIcon } from './TreeItemDisplay';
+import './GridCard.css'
 
 
 export const GridCard = (props: any) => {
@@ -33,7 +34,7 @@ export const GridCard = (props: any) => {
 
     return (
         <Box>
-        <Card>
+        <Card className='gridCard'>
             <CardActionArea
               aria-controls={open ? node.label+'-menu' : undefined}
               aria-haspopup="true"

@@ -3,7 +3,11 @@ import { GridAccordions } from "./GridAccordions"
 
 export const GridDisplay = () => {
     return (
-      <Box>
+      <Box
+        sx={{
+          width: '100%',
+        }}
+      >
         <GridAccordions />
       </Box>
     )
