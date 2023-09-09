@@ -35,7 +35,7 @@ def get_parentid(soup):
 
 
 def main():
-    with open("/home/cirno/source/repos/nav-tree/scripts/data.html", "r") as f:
+    with open("./data.html", "r", encoding="utf8") as f:
         html = f.read()
 
     html = html.strip('\t\r\n')
@@ -50,7 +50,7 @@ def main():
         root, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 
     # write it to a file
-    with open("/home/cirno/source/repos/nav-tree/scripts/data.json", "w") as f:
+    with open("./data.json", "w", encoding="utf8") as f:
         f.write(jsonstring)
 
 
